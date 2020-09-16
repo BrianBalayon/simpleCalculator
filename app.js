@@ -22,65 +22,67 @@ document.addEventListener('click', (event) => {
   if (!target.matches('button')) return;
 
   if (target.className.includes('single number')) {
-    if (!operator){
-      operand = operand ? operand + target.value: target.value;
-      console.log(operand)
-    } else {
-      operand = target.value;
-      console.log(operand)
-      switch (operator) {
-        case "+": {
-          currentTotal = previousTotal + operand;
-          previousTotal = currentTotal;
-          // reset operator
-          operator = null;
-          console.log(currentTotal)
-          break;
-        }
-        case "-": {
-          currentTotal = previousTotal - operand;
-          previousTotal = currentTotal;
-          // reset operator
-          operator = null;
-          console.log(currentTotal)
-          break;
-        }
-        case "*": {
-          currentTotal = previousTotal * operand;
-          previousTotal = currentTotal;
-          // reset operator
-          operator = null;
-          console.log(currentTotal)
-          break;
-        }
-        case "/": {
-          currentTotal = previousTotal / operand;
-          previousTotal = currentTotal;
-          // reset operator
-          operator = null;
-          console.log(currentTotal)
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-    }
-    
+    operand = operand ? operand + target.value: target.value;
+    console.log(operand)
     
   }
 
-  if (target.className.includes('single op') && target.value !== "=") {
+  if (target.className.includes('single op') && !target.id.includes("equals")) {
     operator = target.value;
     if (!previousTotal) previousTotal = operand;
 
     operand = null;
     console.log(operator);
+    // debugger
   } 
 
   if (target.id.includes("equals")) {
-    document.querySelector("#screen").innerHTML = currentTotal;
-    console.log(`Equals ${currentTotal}`);
+
+    operand = target.value;
+    console.log(operand)
+    switch (operator) {
+      case "+": {
+        currentTotal = previousTotal + operand;
+        previousTotal = currentTotal;
+        // reset operator
+        operator = null;
+        document.querySelector("#screen").innerHTML = currentTotal;
+        console.log(`Equals ${currentTotal}`);
+        break;
+      }
+      case "-": {
+        currentTotal = previousTotal - operand;
+        previousTotal = currentTotal;
+        // reset operator
+        operator = null;
+        document.querySelector("#screen").innerHTML = currentTotal;
+        console.log(`Equals ${currentTotal}`);
+        break;
+      }
+      case "*": {
+        currentTotal = previousTotal * operand;
+        previousTotal = currentTotal;
+        // reset operator
+        operator = null;
+        document.querySelector("#screen").innerHTML = currentTotal;
+        console.log(`Equals ${currentTotal}`);
+        break;
+      }
+      case "/": {
+        currentTotal = previousTotal / operand;
+        previousTotal = currentTotal;
+        // reset operator
+        operator = null;
+        document.querySelector("#screen").innerHTML = currentTotal;
+        console.log(`Equals ${currentTotal}`);
+        break;
+      }
+      default: {
+        break;
+      }
+
+    
+    }
   }
 
 })
