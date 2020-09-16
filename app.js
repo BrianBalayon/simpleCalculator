@@ -16,24 +16,36 @@ const calculator = {
 let {currentTotal, previousTotal, operand, operator} = calculator;
 
 document.addEventListener('click', (event) => {
-  //only allow click on button
   const {target} = event;
-
+  
+  // Ensure only button clicks
   if (!target.matches('button')) return;
 
+  // Number buttons
   if (target.className.includes('single number')) {
+    // Sets operand variable if null - otherwise concatenates
     operand = operand ? operand + target.value: target.value;
     console.log(operand)
+    // Change screen text to show current operand after each click
     document.getElementById("screen").innerText = operand;
   }
 
+  // Operation buttons that are not "Equals"
   if (target.className.includes('single op') && !target.id.includes("equals")) {
-
-    operand = Number(operand);
     operator = target.value;
+    // Previous total will only equal currentTotal after "Equals" button is clicked
+    if (currentTotal === previousTotal) {
+      operand = null
+      return;
+    }
+
+    // Default behavior - updates previousTotal assuming operations(+-/*) are being chained
+    operand = Number(operand);
     if (!previousTotal) {
+      // First time set previousTotal to be operand
       previousTotal = operand;
     } else {
+      // Otherwise operate on previousTotal based on operand
       switch (operator) {
         case "+": {
           previousTotal = previousTotal + operand;
@@ -64,14 +76,13 @@ document.addEventListener('click', (event) => {
   } 
 
   if (target.id.includes("equals")) {
+    // Pressing = repeatedly will repeat the same operation
     operand = Number(operand);
 
     switch (operator) {
       case "+": {
         currentTotal = previousTotal + operand;
         previousTotal = currentTotal;
-        // reset operator
-        operator = null;
         document.querySelector("#screen").innerHTML = currentTotal;
         console.log(`Equals ${currentTotal}`);
         break;
@@ -79,8 +90,6 @@ document.addEventListener('click', (event) => {
       case "-": {
         currentTotal = previousTotal - operand;
         previousTotal = currentTotal;
-        // reset operator
-        operator = null;
         document.querySelector("#screen").innerHTML = currentTotal;
         console.log(`Equals ${currentTotal}`);
         break;
@@ -88,8 +97,6 @@ document.addEventListener('click', (event) => {
       case "*": {
         currentTotal = previousTotal * operand;
         previousTotal = currentTotal;
-        // reset operator
-        operator = null;
         document.querySelector("#screen").innerHTML = currentTotal;
         console.log(`Equals ${currentTotal}`);
         break;
@@ -97,8 +104,6 @@ document.addEventListener('click', (event) => {
       case "/": {
         currentTotal = previousTotal / operand;
         previousTotal = currentTotal;
-        // reset operator
-        operator = null;
         document.querySelector("#screen").innerHTML = currentTotal;
         console.log(`Equals ${currentTotal}`);
         break;
@@ -107,7 +112,6 @@ document.addEventListener('click', (event) => {
         break;
       }
 
-    
     }
   }
 
