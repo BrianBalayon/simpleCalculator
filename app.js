@@ -113,7 +113,6 @@ window.onload = function () {
           break;
         }
 
-
       }
     }
 
