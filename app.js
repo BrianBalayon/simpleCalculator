@@ -30,6 +30,13 @@ document.addEventListener('click', (event) => {
     document.getElementById("screen").innerText = operand;
   }
 
+  // Press decimal
+  if (target.id.includes("dot") && !decimalAdded) {
+    operand = operand ? operand + "." : "0.";
+    document.getElementById("screen").innerText = operand;
+    decimalAdded = true;
+  }
+  
   // Operation buttons that are not "Equals"
   if (target.className.includes('single op') && !target.id.includes("equals")) {
     operator = target.value;
@@ -74,6 +81,24 @@ document.addEventListener('click', (event) => {
     operand = null;
     console.log(operator);
   } 
+
+  // Press AC
+  if (target.className.includes("single gray")) {
+    if (target.id.includes("AC")) {
+      document.getElementById("screen").innerHTML = "0";
+
+      // Changes the button from "C" to "AC" after clearing all numbers
+      document.getElementById("AC").innerHTML = "AC";
+
+      // Clears the number input history
+      currentTotal = 0;
+      previousTotal = null;
+      operand = null;
+      operator = null;
+      decimalAdded = false;
+    }
+  }
+
 
   if (target.id.includes("equals")) {
     // Pressing = repeatedly will repeat the same operation
