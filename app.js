@@ -24,6 +24,7 @@ document.addEventListener('click', (event) => {
   if (target.className.includes('single number')) {
     operand = operand ? operand + target.value: target.value;
     console.log(operand)
+    document.getElementById("screen").innerText = operand;
     
   }
 
