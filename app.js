@@ -9,7 +9,7 @@
 
 const calculator = {
   currentTotal: 0,
-  previousTotal: 0,
+  previousTotal: null,
   operand: null,
   operator: null
 }
@@ -20,16 +20,18 @@ document.addEventListener('click', (event) => {
   const {target} = event;
 
   if (!target.matches('button')) return;
-  debugger
+
   if (target.className.includes('single number')) {
     if (!operator){
       operand = operand ? operand + target.value: target.value;
       console.log(operand)
     } else {
+      operand = target.value;
       console.log(operand)
       switch (operator) {
         case "+": {
           currentTotal = previousTotal + operand;
+          previousTotal = currentTotal;
           // reset operator
           operator = null;
           console.log(currentTotal)
@@ -37,6 +39,7 @@ document.addEventListener('click', (event) => {
         }
         case "-": {
           currentTotal = previousTotal - operand;
+          previousTotal = currentTotal;
           // reset operator
           operator = null;
           console.log(currentTotal)
@@ -44,6 +47,7 @@ document.addEventListener('click', (event) => {
         }
         case "*": {
           currentTotal = previousTotal * operand;
+          previousTotal = currentTotal;
           // reset operator
           operator = null;
           console.log(currentTotal)
@@ -51,6 +55,7 @@ document.addEventListener('click', (event) => {
         }
         case "/": {
           currentTotal = previousTotal / operand;
+          previousTotal = currentTotal;
           // reset operator
           operator = null;
           console.log(currentTotal)
@@ -64,16 +69,18 @@ document.addEventListener('click', (event) => {
     
     
   }
+
   if (target.className.includes('single op') && target.value !== "=") {
     operator = target.value;
-    previousTotal = operand;
+    if (!previousTotal) previousTotal = operand;
+
+    operand = null;
     console.log(operator);
+  } 
+
+  if (target.id.includes("equals")) {
+    document.querySelector("#screen").innerHTML = currentTotal;
+    console.log(`Equals ${currentTotal}`);
   }
-
-  //Need Fix
-  // if (target.className.includes('single op') && target.value === "=") {
-
-  //   console.log(`Equals ${currentTotal}`);
-  // }
 
 })
