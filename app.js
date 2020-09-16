@@ -28,18 +28,41 @@ document.addEventListener('click', (event) => {
   }
 
   if (target.className.includes('single op') && !target.id.includes("equals")) {
+    operand = Number(operand);
     operator = target.value;
-    if (!previousTotal) previousTotal = operand;
+    if (!previousTotal) {
+      previousTotal = operand;
+    } else {
+      switch (operator) {
+        case "+": {
+          previousTotal = previousTotal + operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+        }
+        case "-": {
+          previousTotal = previousTotal - operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+        }
+        case "*": {
+          previousTotal = previousTotal * operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+        }
+        case "/": {
+          previousTotal = previousTotal / operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+        }
+        
+      }
+    }
+      
+    // debugger
 
     operand = null;
     console.log(operator);
-    // debugger
   } 
 
   if (target.id.includes("equals")) {
-
-    operand = target.value;
-    console.log(operand)
+    // debugger
+    operand = Number(operand);
     switch (operator) {
       case "+": {
         currentTotal = previousTotal + operand;
