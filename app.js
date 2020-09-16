@@ -37,31 +37,32 @@ document.addEventListener('click', (event) => {
         case "+": {
           previousTotal = previousTotal + operand;
           document.querySelector("#screen").innerHTML = currentTotal;
+          break;
         }
         case "-": {
           previousTotal = previousTotal - operand;
           document.querySelector("#screen").innerHTML = currentTotal;
+          break;
         }
         case "*": {
           previousTotal = previousTotal * operand;
           document.querySelector("#screen").innerHTML = currentTotal;
+          break;
         }
         case "/": {
           previousTotal = previousTotal / operand;
           document.querySelector("#screen").innerHTML = currentTotal;
+          break;
         }
         
       }
     }
-      
-    // debugger
 
     operand = null;
     console.log(operator);
   } 
 
   if (target.id.includes("equals")) {
-    // debugger
     operand = Number(operand);
     switch (operator) {
       case "+": {
