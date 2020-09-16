@@ -33,7 +33,7 @@ document.addEventListener('click', (event) => {
     document.getElementById('screen').innerHTML = '0';
     
     // Changes the button from "C" to "AC" after clearing all numbers
-    document.getElementById('AC').innerHTML = 'AC';
+    document.getElementById('AC').innerHTML = 'C';
 
     // Clears the number input history
       currentTotal = 0;
@@ -81,6 +81,7 @@ document.addEventListener('click', (event) => {
 
   if (target.id.includes("equals")) {
     operand = Number(operand);
+    document.getElementById('AC').innerHTML = 'AC';
 
     switch (operator) {
       case "+": {
