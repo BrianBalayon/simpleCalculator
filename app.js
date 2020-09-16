@@ -27,6 +27,22 @@ document.addEventListener('click', (event) => {
     document.getElementById("screen").innerText = operand;
   }
 
+  if (target.className.includes('single gray')) {
+
+    if(target.id.includes("AC")){
+    document.getElementById('screen').innerHTML = '0';
+    
+    // Changes the button from "C" to "AC" after clearing all numbers
+    document.getElementById('AC').innerHTML = 'AC';
+
+    // Clears the number input history
+      currentTotal = 0;
+      previousTotal =null;
+      operand = null;
+      operator = null;
+    }
+  }
+
   if (target.className.includes('single op') && !target.id.includes("equals")) {
 
     operand = Number(operand);
