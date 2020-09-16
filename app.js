@@ -25,22 +25,47 @@ document.addEventListener('click', (event) => {
     operand = operand ? operand + target.value: target.value;
     console.log(operand)
     document.getElementById("screen").innerText = operand;
-    
   }
 
   if (target.className.includes('single op') && !target.id.includes("equals")) {
+
+    operand = Number(operand);
     operator = target.value;
-    if (!previousTotal) previousTotal = operand;
+    if (!previousTotal) {
+      previousTotal = operand;
+    } else {
+      switch (operator) {
+        case "+": {
+          previousTotal = previousTotal + operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+          break;
+        }
+        case "-": {
+          previousTotal = previousTotal - operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+          break;
+        }
+        case "*": {
+          previousTotal = previousTotal * operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+          break;
+        }
+        case "/": {
+          previousTotal = previousTotal / operand;
+          document.querySelector("#screen").innerHTML = currentTotal;
+          break;
+        }
+        
+      }
+    }
 
     operand = null;
     console.log(operator);
-    // debugger
   } 
 
   if (target.id.includes("equals")) {
+    operand = Number(operand);
 
-    operand = target.value;
-    console.log(operand)
     switch (operator) {
       case "+": {
         currentTotal = previousTotal + operand;
