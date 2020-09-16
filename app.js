@@ -24,10 +24,11 @@ document.addEventListener('click', (event) => {
   if (target.className.includes('single number')) {
     operand = operand ? operand + target.value: target.value;
     console.log(operand)
-    
+    document.getElementById("screen").innerText = operand;
   }
 
   if (target.className.includes('single op') && !target.id.includes("equals")) {
+
     operand = Number(operand);
     operator = target.value;
     if (!previousTotal) {
@@ -64,6 +65,7 @@ document.addEventListener('click', (event) => {
 
   if (target.id.includes("equals")) {
     operand = Number(operand);
+
     switch (operator) {
       case "+": {
         currentTotal = previousTotal + operand;
