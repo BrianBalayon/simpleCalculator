@@ -24,3 +24,7 @@ body {
 #screen {
     grid-column-start: span 4;
 }
+
+.input {
+  background-color: grey;
+}
