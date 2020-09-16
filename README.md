@@ -1,6 +1,6 @@
 # simpleCalculator
 
-A simple calculator
+This is a simple Calculator
 
 ## Technologies Used
 
