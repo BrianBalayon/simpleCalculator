@@ -10,7 +10,6 @@
 // Allows the DOM to load before JavaScript is executed
 window.onload = function () {
 
-
   // Selects the button elements with the classname number
   document.querySelectorAll('.number').forEach(item => {
 
