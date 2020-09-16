@@ -1,2 +1,10 @@
 # simpleCalculator
-A simple vanillaJS calculator built using HTML and CSS.
+
+A simple calculator
+
+## Technologies Used
+
+JavaScript
+HTML
+CSS
+git
