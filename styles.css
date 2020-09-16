@@ -1,15 +1,15 @@
 body {
     height: 100vh;
     width: 100vw;
-    background: rgb(252,116,108);
-    background: linear-gradient(67deg, rgba(252,116,108,1) 0%, rgba(247,143,115,1) 45%, rgba(251,182,113,1) 100%);
+    background: rgb(252, 116, 108);
+    background: linear-gradient(67deg, rgba(252, 116, 108, 1) 0%, rgba(247, 143, 115, 1) 45%, rgba(251, 182, 113, 1) 100%);
     overflow: hidden;
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
 #calculator {
-    padding:20px;
+    padding: 20px;
     border-radius: 20px;
     margin: auto;
     width: 320px;
@@ -17,8 +17,8 @@ body {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    background: rgb(44,76,108);
-    background: linear-gradient(3deg, rgba(44,76,108,1) 0%, rgba(20,36,60,1) 100%);
+    background: rgb(44, 76, 108);
+    background: linear-gradient(3deg, rgba(44, 76, 108, 1) 0%, rgba(20, 36, 60, 1) 100%);
 }
 
 .single {
@@ -38,12 +38,12 @@ body {
 }
 
 .input {
-  background-color: grey;
+    background-color: grey;
 }
 
 button {
     border-radius: 60px;
-    margin:5px;
+    margin: 5px;
     outline-width: 0;
     border: none;
 }
@@ -51,4 +51,12 @@ button {
 button:active {
     transform: scale(0.99);
     background: #8c9fb1;
+}
+
+.op {
+    background: #FB9405;
+}
+
+#equals{
+    background: #33CA74 !important;
 }
