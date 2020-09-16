@@ -12,6 +12,21 @@ window.onload = function () {
         });
     });
 
+    // Selects the button element with the id AC
+    document.getElementById('AC').addEventListener('click', function () {
+
+        // Clears all numbers input in the screen id
+        document.getElementById('screen').innerHTML = '0';
+
+        // Changes the button from "C" to "AC" after clearing all numbers
+        document.getElementById('AC').innerHTML = 'AC';
+    });
+
+
+
+
+
+
 
 
 }
