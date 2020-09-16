@@ -4,7 +4,7 @@ window.onload = function () {
     // Selects the button elements with the classname number
     document.querySelectorAll('.number').forEach(item => {
 
-        // Applies the eventListener to all elements with the classname number
+        // Applies the eventListener to all elements with the classname number on click
         item.addEventListener('click', event => {
 
             // Changes the button with the id AC HTML from "AC" to "C"
@@ -12,7 +12,7 @@ window.onload = function () {
         });
     });
 
-    // Selects the button element with the id AC
+    // Selects the button element with the id AC on click
     document.getElementById('AC').addEventListener('click', function () {
 
         // Clears all numbers input in the screen id
