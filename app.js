@@ -40,8 +40,11 @@ document.addEventListener("click", (event) => {
       if (target.id.includes("AC")) {
          document.getElementById("screen").innerHTML = "0";
 
-         // Changes the button from "C" to "AC" after clearing all numbers
-         document.getElementById("AC").innerHTML = "AC";
+    if(target.id.includes("AC")){
+    document.getElementById('screen').innerHTML = '0';
+    
+    // Changes the button from "C" to "AC" after clearing all numbers
+    document.getElementById('AC').innerHTML = 'C';
 
          // Clears the number input history
          currentTotal = 0;
@@ -51,6 +54,7 @@ document.addEventListener("click", (event) => {
          decimalAdded = false;
       }
    }
+}
 
    // Press decimal
    if (target.id.includes("dot") && !decimalAdded) {
@@ -98,9 +102,9 @@ document.addEventListener("click", (event) => {
       console.log(operator);
    }
 
-   // Press equal
-   if (target.id.includes("equals")) {
-      operand = Number(operand);
+  if (target.id.includes("equals")) {
+    operand = Number(operand);
+    document.getElementById('AC').innerHTML = 'AC';
 
       switch (operator) {
          case "+": {
