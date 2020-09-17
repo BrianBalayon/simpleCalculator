@@ -77,7 +77,6 @@ document.addEventListener('click', (event) => {
         
       }
     }
-
     operand = null;
     console.log(operator);
   } 
@@ -86,23 +85,23 @@ document.addEventListener('click', (event) => {
   if (target.className.includes("single gray")) {
     if (target.id.includes("AC")) {
       document.getElementById("screen").innerHTML = "0";
-
+    
       // Changes the button from "C" to "AC" after clearing all numbers
-      document.getElementById("AC").innerHTML = "AC";
+      document.getElementById('AC').innerHTML = 'C';
 
-      // Clears the number input history
-      currentTotal = 0;
-      previousTotal = null;
-      operand = null;
-      operator = null;
-      decimalAdded = false;
-    }
-  }
-
+         // Clears the number input history
+         currentTotal = 0;
+         previousTotal = null;
+         operand = null;
+         operator = null;
+         decimalAdded = false;
+      }
+   }
 
   if (target.id.includes("equals")) {
     // Pressing = repeatedly will repeat the same operation
     operand = Number(operand);
+    document.getElementById('AC').innerHTML = 'AC';
 
     switch (operator) {
       case "+": {
